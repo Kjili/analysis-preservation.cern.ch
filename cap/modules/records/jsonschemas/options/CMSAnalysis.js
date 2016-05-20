@@ -536,6 +536,172 @@ window.schemaOptions = {
           }
         }
       },
+      "final_state": {
+        "order": 5,
+        "toolbarSticky": "true",
+        "type": "depositgroup-array",
+        "fields": {
+          "item": {
+            "fields": {
+              "physics_objects": {
+                "order": 1,
+                "minItems": 1,
+                "type": "depositgroup-object-array",
+                "fields": {
+                  "item": {
+                    "fields": {
+                      "object": {
+                        "placeholder": "Object",
+                        "noneLabel": "Select Object",
+                        "type": "select2",
+                        "select2": true,
+                        "order": 1
+                      },
+                      "jet_type": {
+                        "noneLabel": "Select Jet",
+                        "type": "select2",
+                        "select2": true,
+                        "order": 2,
+                        "dependencies": {
+                          "object": "jet"
+                        }
+                      },
+                      "sel_criteria": {
+                        "placeholder": "Selection Criteria",
+                        "type": "radio",
+                        "removeDefaultNone": true,
+                        "optionLabels": [
+                          "Tight",
+                          "Loose"
+                        ],
+                        "order": 6
+                      },
+                      "number": {
+                        "placeholder": "Number, e.g. 1",
+                        "order": 3
+                      },
+                      "pt_cut": {
+                        "placeholder": "PT Cut, e.g. > 20 Gev",
+                        "order": 4
+                      },
+                      "era_cut": {
+                        "placeholder": "ETA Cut, e.g. < 2.1",
+                        "order": 5
+                      }
+                    }
+                  }
+                }
+              },
+              "cuts": {
+                "order": 2,
+                "type": "depositgroup-object-array",
+                "minItems": 1,
+                "fields": {
+                  "item": {
+                    "fields": {
+                      "eta": {
+                        "placeholder": "E.g. ECAL"
+                      },
+                      "pT": {
+                        "placeholder": "E.g. > 20 Gev"
+                      }
+                    }
+				  }
+				}
+              },
+              "veto": {
+                "order": 3,
+                "minItems": 1,
+                "type": "depositgroup-object-array",
+                "fields": {
+                  "item": {
+                    "fields": {
+                      "particle": {
+                        "placeholder": "Particle",
+                        "noneLabel": "Select Particle",
+                        "type": "select2",
+                        "select2": true,
+                        "order": 1
+                      },
+                      "number": {
+                        "placeholder": "Number, e.g. 1",
+                        "order": 2
+                      },
+                      "pt_cut": {
+                        "placeholder": "PT Cut, e.g. > 20 Gev",
+                        "order": 3
+                      },
+                      "era_cut": {
+                        "placeholder": "ETA Cut, e.g. < 2.1",
+                        "order": 4
+                      }
+                    }
+                  }
+                }
+              },
+			  "event_level_quantity": {
+                "order": 4,
+				"type": "depositgroup-object",
+				"fields": {
+				  "someplaceholder": {
+					"order": 1,
+					"placeholder": ""
+				  }
+				}
+			  },
+			  "final_state_object": {
+                "order": 5,
+				"type": "depositgroup-object",
+				"fields": {
+				  "base_definition": {
+					"order": 1,
+					"placeholder": ""
+				  },
+				  "physical_value": {
+					"order": 2,
+					"placeholder": ""
+				  },
+				  "physical_value": {
+					"order": 3,
+					"placeholder": ""
+				  },
+				  "physical_value": {
+					"order": 4,
+					"placeholder": ""
+				  },
+				  "selection_criteria": {
+					"order": 5,
+					"type": "depositgroup-object-array",
+					"items": {
+					  "type": "depositgroup-object",
+					  "fields": {
+					    "item": {
+						  "fields": {
+							"someplaceholder": {
+							  "order": 1,
+							  "placeholder": ""
+						    }
+						  }
+						}
+					  }
+					}
+				  }
+				}
+			  },
+			  "selection_criteria": {
+				"order": 6,
+				"type": "depositgroup-object",
+				"fields": {
+				  "someplaceholder": {
+					"order": 1,
+					"placeholder": ""
+				  }
+				}
+			  }
+			}
+		  }
+		}
+	  },
       "post_aod_processing": {
         "order": 5,
         "type": "depositgroup-array",

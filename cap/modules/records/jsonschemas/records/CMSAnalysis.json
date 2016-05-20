@@ -219,6 +219,169 @@
         "$ref": "https://analysis-preservation.cern.ch/records/jsonschemas/definitions/DetectorState-vtest01.json"
       }
     },
+    "final_state": {
+      "title": "Detector Final State",
+      "description": "Provide information about datasets, triggers, physics objects, etc",
+      "type": "array",
+      "default": [{}],
+      "items": {
+		"title": "Detector Final State",
+		"description": "Information concerning the state of the detector",
+		"type": "object",
+		"properties": {
+		  "physics_objects": {
+			"title": "Physics Objects",
+			"type": "array",
+			"items": {
+			  "type": "object",
+			  "properties": {
+				"object": {
+				  "title": "Object",
+				  "type": "string",
+				  "enum": [
+					"electron",
+					"muon",
+					"tau",
+					"jet",
+					"bjet",
+					"photon"
+				  ]
+				},
+				"jet_type": {
+				  "type": "string",
+				  "title": "Jet type",
+				  "enum": [
+					"AK4",
+					"AK8"
+				  ],
+				  "dependencies": [
+					"object"
+				  ]
+				},
+				"sel_criteria": {
+				  "type": "string",
+				  "title": "Selection Criteria",
+				  "enum": ["tight", "loose"]
+				},
+				"number": {
+				  "title": "Number",
+				  "type": "integer"
+				},
+				"pt_cut": {
+				  "title": "PT",
+				  "type": "string"
+				},
+				"era_cut": {
+				  "title": "ETA",
+				  "type": "string"
+				}
+			  }
+			}
+		  },
+		  "cuts": {
+			"title": "Cuts",
+			"description": "e.g. [{'eta':'ECAL', 'pT': '' >20 Gev'}]",
+			"type": "array",
+			"items": {
+			  "title": "Cut",
+			  "type": "object",
+			  "properties": {
+				"eta": {
+				  "title": "eta",
+				  "type": "string"
+				},
+				"pT": {
+				  "title": "pT",
+				  "type": "string"
+				}
+			  }
+			}
+		  },
+		  "veto": {
+			"title": "Vetos",
+			"description": "Provide vetos",
+			"type": "array",
+			"items": {
+			  "type": "object",
+			  "properties": {
+				"particle": {
+				  "title": "Particle",
+				  "type": "string",
+				  "enum": ["electron", "muon", "bjet"]
+				},
+				"number": {
+				  "title": "Number",
+				  "type": "integer"
+				},
+				"pt_cut": {
+				  "title": "PT",
+				  "type": "string"
+				},
+				"era_cut": {
+				  "title": "ETA",
+				  "type": "string"
+				}
+			  }
+			}
+		  },
+		  "event_level_quantity": {
+			"title": "Event Level Quantity",
+			"type": "object",
+			"properties": {
+			  "someplaceholder": {
+				"title": "Placeholder",
+				"type": "string"
+			  }
+			}
+		  },
+		  "final_state_object": {
+			"title": "Final State Object",
+			"type": "object",
+			"properties": {
+			  "base_definition": {
+				"title": "Base Definition",
+				"type": "string"
+			  },
+			  "physical_value": {
+				"title": "Physical Value",
+				"type": "string"
+			  },
+			  "physical_value": {
+				"title": "Physical Value",
+				"type": "string"
+			  },
+			  "physical_value": {
+				"title": "Physical Value",
+				"type": "string"
+			  },
+			  "selection_criteria": {
+				"title": "Selection Criteria",
+				"type": "array",
+				"items": {
+				  "type": "object",
+				  "properties": {
+					"someplaceholder": {
+					  "title": "Placeholder",
+					  "type": "string"
+					}
+				  }
+				}
+			  }
+			}
+		  },
+		  "selection_criteria": {
+			"title": "Selection Criteria",
+			"type": "object",
+			"properties": {
+			  "someplaceholder": {
+				"title": "Placeholder",
+				"type": "string"
+			  }
+			}
+		  }
+		}
+	  }
+    },
     "post_aod_processing": {
       "title": "Post-AOD Processing",
       "type": "array",
