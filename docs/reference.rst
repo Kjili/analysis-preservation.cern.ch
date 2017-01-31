@@ -2,6 +2,10 @@ Reference Guide
 ======================
 
 .. toctree::
+
+    jargon
+
+.. toctree::
     :hidden:
 
     glossary
