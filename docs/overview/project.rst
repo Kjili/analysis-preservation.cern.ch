@@ -8,7 +8,7 @@ CERN Analysis Preservation provides a centralised platform for physicists to pre
 - `1. Preserve`_
 - `2. Search and Retrieve`_
 - `3. Review and Compare`_
-- `4. Reproduce and Reuse`_
+- `4. Reproduce and Rerun`_
 - `5. Imagine...`_
 
 1. Preserve
