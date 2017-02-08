@@ -6,7 +6,7 @@ To build this documentation with Sphinx you have to follow a few simple steps.
 Setup the Environment
 ---------------------
 
-If you only want to build the docs and you do not want to run the code or you want to keep these tasks in seperate environments, continue with the following.
+If you only want to build the docs and you do not want to run the code or you want to keep these tasks in separate environments, continue with the following.
 
 First, install the necessary requirements:
 

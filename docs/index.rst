@@ -32,7 +32,7 @@ If you find a bug or have a (feature) request, go ahead and add an issue for it 
 Pull requests
 ~~~~~~~~~~~~~
 
-If you want to contribute directly to the project (e.g. code, json workflow files, documentation), you are welcome to create a pull request for your changes. If you want to know how to write good commit messages that will help us (now) and you (in a few weeks) to understand what you did, you may want to check out `this <http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html>`_.
+If you want to contribute directly to the project (e.g. code, JSON workflow files, documentation), you are welcome to create a pull request for your changes. If you want to know how to write good commit messages that will help us (now) and you (in a few weeks) to understand what you did, you may want to check out `this <http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html>`_.
 
 Thank you for helping us helping you!
 
