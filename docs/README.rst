@@ -61,3 +61,20 @@ then do the following:
 
 	workon capdocs
 	make html
+
+Spell-Check the Docs
+--------------------
+
+One possibility to spell-check the docs directly from your command line is to install:
+
+.. code-block:: console
+
+	hunspell hunspell-en
+
+and run:
+
+.. code-block:: console
+
+	find . -type f -name '*.rst' -exec hunspell -d en_GB -l {} \;
+
+from within the docs folder on your command line. This will give you a list of words possibly spelled incorrectly.
