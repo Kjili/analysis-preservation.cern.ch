@@ -44,7 +44,7 @@ For example, on Debian GNU/Linux, you can install them as follows:
 
 .. code-block:: shell
 
-   sudo apt-get install elasticsearch postgresql rabbitmq-server redis-server
+   $ sudo apt-get install elasticsearch postgresql rabbitmq-server redis-server
 
 Now, add the following lines in your "elasticsearch.yml" (for
 Debian GNU/Linux the full path is
@@ -65,7 +65,7 @@ and create a user who is allowed to create databases:
 
 .. code-block:: shell
 
-   createuser -d $Username
+   $ createuser -d $Username
 
 Finally, do a system-wide install (see below for how to do a local
 install enclosed inside your virtual environment instead) for the Sass
@@ -74,7 +74,7 @@ preprocessor by following
 
 .. code-block:: shell
 
-  sudo npm install -g node-sass@3.8.0 clean-css@3.4.12 uglify-js requirejs
+  $ sudo npm install -g node-sass@3.8.0 clean-css@3.4.12 uglify-js requirejs
 
 Installation
 ------------
@@ -83,7 +83,7 @@ Let's start by cloning the repository:
 
 .. code-block:: shell
 
-   git clone https://github.com/cernanalysispreservation/analysispreservation.cern.ch.git cap
+   $ git clone https://github.com/cernanalysispreservation/analysispreservation.cern.ch.git cap
 
 All else will be installed inside a python *virtualenv* for easy
 maintenance and encapsulation of the libraries required. From inside
@@ -96,8 +96,8 @@ instance from inside the repository folder:
 
 .. code-block:: shell
 
-   cd cap
-   mkvirtualenv cap
+   $ cd cap
+   $ mkvirtualenv cap
 
 Install the CAP package from inside your ``cap`` repository folder and
 run npm to install the necessary JavaScript assets the Invenio modules
@@ -105,26 +105,26 @@ depend on:
 
 .. code-block:: shell
 
-   pip install -r requirements.txt
-   cap npm
-   cdvirtualenv var/cap-instance/static
-   npm install bower
-   npm install
+   (cap)$ pip install -r requirements.txt
+   (cap)$ cap npm
+   (cap)$ cdvirtualenv var/cap-instance/static
+   (cap)$ npm install bower
+   (cap)$ npm install
 
 Build the assets from your repository folder:
 
 .. code-block:: shell
 
-   cd -
-   cap collect -v
-   cap assets build
-   python ./scripts/schemas.py
+   (cap)$ cd -
+   (cap)$ cap collect -v
+   (cap)$ cap assets build
+   (cap)$ python ./scripts/schemas.py
 
 Start Elasticsearch in the background:
 
 .. code-block:: shell
 
-   elasticsearch &
+   (cap)$ elasticsearch &
 
 **Note:**	Instead of the following steps you may want to run
 ``./scripts/init.sh``.
@@ -133,33 +133,33 @@ Create a database to hold persistent data:
 
 .. code-block:: shell
 
-   cap db init
-   cap db create
+   (cap)$ cap db init
+   (cap)$ cap db create
 
 Create test user accounts and roles:
 
 .. code-block:: shell
 
-   cap users create info@inveniosoftware.org -a --password infoinfo
+   (cap)$ cap users create info@inveniosoftware.org -a --password infoinfo
 
-   cap users create alice@inveniosoftware.org -a --password alicealice
-   cap users create atlas@inveniosoftware.org -a --password atlasatlas
-   cap users create cms@inveniosoftware.org -a --password cmscms
-   cap users create lhcb@inveniosoftware.org -a --password lhcblhcb
+   (cap)$ cap users create alice@inveniosoftware.org -a --password alicealice
+   (cap)$ cap users create atlas@inveniosoftware.org -a --password atlasatlas
+   (cap)$ cap users create cms@inveniosoftware.org -a --password cmscms
+   (cap)$ cap users create lhcb@inveniosoftware.org -a --password lhcblhcb
 
-   cap roles create analysis-preservation-support@cern.ch
+   (cap)$ cap roles create analysis-preservation-support@cern.ch
 
-   cap roles create alice-member@cern.ch
-   cap roles create atlas-active-members-all@cern.ch
-   cap roles create cms-members@cern.ch
-   cap roles create lhcb-general@cern.ch
+   (cap)$ cap roles create alice-member@cern.ch
+   (cap)$ cap roles create atlas-active-members-all@cern.ch
+   (cap)$ cap roles create cms-members@cern.ch
+   (cap)$ cap roles create lhcb-general@cern.ch
 
-   cap roles add info@inveniosoftware.org analysis-preservation-support@cern.ch
+   (cap)$ cap roles add info@inveniosoftware.org analysis-preservation-support@cern.ch
 
-   cap roles add alice@inveniosoftware.org alice-member@cern.ch
-   cap roles add atlas@inveniosoftware.org atlas-active-members-all@cern.ch
-   cap roles add cms@inveniosoftware.org cms-members@cern.ch
-   cap roles add lhcb@inveniosoftware.org lhcb-general@cern.ch
+   (cap)$ cap roles add alice@inveniosoftware.org alice-member@cern.ch
+   (cap)$ cap roles add atlas@inveniosoftware.org atlas-active-members-all@cern.ch
+   (cap)$ cap roles add cms@inveniosoftware.org cms-members@cern.ch
+   (cap)$ cap roles add lhcb@inveniosoftware.org lhcb-general@cern.ch
 
 ``info@inveniosoftware.org`` is a superuser,
 ``alice@inveniosoftware.org`` is an ALICE user,
@@ -171,28 +171,28 @@ Create some basic collections for ElasticSearch:
 
 .. code-block:: shell
 
-   cap collections create CERNAnalysisPreservation
-   cap collections create CMS -p CERNAnalysisPreservation
-   cap collections create CMSQuestionnaire -p CMS -q '_type:cmsquestionnaire'
-   cap collections create CMSAnalysis -p CMS -q '_type:cmsanalysis'
-   cap collections create LHCb -p CERNAnalysisPreservation
-   cap collections create LHCbAnalysis -p LHCb -q '_type:lhcbanalysis'
-   cap collections create ATLAS -p CERNAnalysisPreservation
-   cap collections create ATLASWorkflows -p ATLAS -q '_type:atlasworkflows'
-   cap collections create ATLASAnalysis -p ATLAS -q '_type:atlasanalysis'
-   cap collections create ALICE -p CERNAnalysisPreservation
+   (cap)$ cap collections create CERNAnalysisPreservation
+   (cap)$ cap collections create CMS -p CERNAnalysisPreservation
+   (cap)$ cap collections create CMSQuestionnaire -p CMS -q '_type:cmsquestionnaire'
+   (cap)$ cap collections create CMSAnalysis -p CMS -q '_type:cmsanalysis'
+   (cap)$ cap collections create LHCb -p CERNAnalysisPreservation
+   (cap)$ cap collections create LHCbAnalysis -p LHCb -q '_type:lhcbanalysis'
+   (cap)$ cap collections create ATLAS -p CERNAnalysisPreservation
+   (cap)$ cap collections create ATLASWorkflows -p ATLAS -q '_type:atlasworkflows'
+   (cap)$ cap collections create ATLASAnalysis -p ATLAS -q '_type:atlasanalysis'
+   (cap)$ cap collections create ALICE -p CERNAnalysisPreservation
 
 Create the index in ElasticSearch using the mappings:
 
 .. code-block:: shell
 
-   cap index init
+   (cap)$ cap index init
 
 Create a location for files:
 
 .. code-block:: shell
 
-   cap files location local var/data --default
+   (cap)$ cap files location local var/data --default
 
 Now you are ready to run the server.
 
@@ -204,10 +204,10 @@ If you want to populate the database with example records simply run:
 .. code-block:: shell
 
    # For creating demo records with schema validation
-   cap fixtures records
+   (cap)$ cap fixtures records
 
    # For creating demo records without validation ( --force )
-   cap fixtures records -f
+   (cap)$ cap fixtures records -f
 
 Prerequisites for Running the Server
 ------------------------------------
@@ -217,8 +217,8 @@ to be done only once from inside your repository folder:
 
 .. code-block:: shell
 
-   openssl genrsa 4096 > ssl.key
-   openssl req -key ssl.key -new -x509 -days 365 -sha256 -batch > ssl.crt
+   (cap)$ openssl genrsa 4096 > ssl.key
+   (cap)$ openssl req -key ssl.key -new -x509 -days 365 -sha256 -batch > ssl.crt
 
 The certificate will be valid for 365 days.
 
@@ -229,13 +229,13 @@ Start a redis server in the background:
 
 .. code-block:: shell
 
-   redis-server &
+   (cap)$ redis-server &
 
 Start the web application locally in debug mode:
 
 .. code-block:: shell
 
-   gunicorn -b 127.0.0.1:5000 --certfile=ssl.crt --keyfile=ssl.key cap.wsgi:application --workers 9 --log-level debug
+   (cap)$ gunicorn -b 127.0.0.1:5000 --certfile=ssl.crt --keyfile=ssl.key cap.wsgi:application --workers 9 --log-level debug
 
 Now you can log in locally in your browser by going to
 ``https://localhost:5000/app/login``.
@@ -251,7 +251,7 @@ creation as follows (e.g. to use python 2.7):
 
 .. code-block:: shell
 
-   mkvirtualenv -p /usr/bin/python2.7 cap
+   $ mkvirtualenv -p /usr/bin/python2.7 cap
 
 Local Installation of npms and gems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -271,9 +271,9 @@ to the ``postactivate`` of your ``.virtualenv`` folder and run
 
 .. code-block:: shell
 
-   cdvirtualenv
-   gem install sass
-   npm -g install node-sass@3.8.0 clean-css@3.4.12 uglify-js requirejs
+   (cap)$ cdvirtualenv
+   (cap)$ gem install sass
+   (cap)$ npm -g install node-sass@3.8.0 clean-css@3.4.12 uglify-js requirejs
 
 after creating your virtual environment.
 
@@ -288,7 +288,7 @@ following requirements, e.g. on Debian GNU/Linux:
 
 .. code-block:: shell
 
-   sudo apt-get install npm ruby gcc python-virtualenvwrapper
+   $ sudo apt-get install npm ruby gcc python-virtualenvwrapper
 
 The version of Python 2 given by ``python --version`` or
 ``python2 --version`` should be greater than 2.7.10.
@@ -302,7 +302,7 @@ will have to update them running:
 
 .. code-block:: shell
 
-   pip install -r requirements.txt
+   (cap)$ pip install -r requirements.txt
 
 Database Indexing Problems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -311,15 +311,15 @@ If you have trouble indexing the database try:
 
 .. code-block:: shell
 
-   cap db destroy
-   cap db init
+   (cap)$ cap db destroy
+   (cap)$ cap db init
 
 and if that does not work try:
 
 .. code-block:: shell
 
-   curl -XDELETE 'http://localhost:9200/_all'
-   cap db init
+   (cap)$ curl -XDELETE 'http://localhost:9200/_all'
+   (cap)$ cap db init
 
 
 Docker Installation
@@ -332,28 +332,28 @@ configuration:
 
 .. code-block:: shell
 
-   docker-compose -f docker-compose-dev.yml build
+   $ docker-compose -f docker-compose-dev.yml build
 
 Third, start the CERN Analysis Preservation application:
 
 .. code-block:: shell
 
-   docker-compose -f docker-compose-dev.yml up -d
+   $ docker-compose -f docker-compose-dev.yml up -d
 
 Fourth, create database and initialise default collections and users:
 
 .. code-block:: shell
 
-   docker exec -i -t analysispreservationcernch_web_1 /code/scripts/init.sh
+   $ docker exec -i -t analysispreservationcernch_web_1 /code/scripts/init.sh
 
 Fifth, populate the database with some example records (optional):
 
 .. code-block:: shell
 
-   docker exec -i -t analysispreservationcernch_web_1 cap fixtures records -f
+   $ docker exec -i -t analysispreservationcernch_web_1 cap fixtures records -f
 
 Finally, see the site in action:
 
 .. code-block:: shell
 
-   firefox http://localhost/
+   $ firefox http://localhost/
